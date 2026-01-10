@@ -1,17 +1,33 @@
 {
-  "name": "react-justified-gallery",
-  "version": "0.1.0",
+  "name": "@n-ivan/react-justified-gallery",
+  "version": "1.0.0",
   "description": "A React component for creating justified image galleries",
+  "keywords": [
+    "react",
+    "gallery",
+    "justified",
+    "images",
+    "layout"
+  ],
+  "homepage": "https://github.com/n-ivan/react-justified-gallery#readme",
+  "bugs": {
+    "url": "https://github.com/n-ivan/react-justified-gallery/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n-ivan/react-justified-gallery.git"
+  },
+  "license": "MIT",
+  "author": "Ivan Nesterovic",
   "type": "module",
-  "main": "./dist/justified-gallery.js",
-  "module": "./dist/justified-gallery.js",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/justified-gallery.js"
     }
   },
+  "main": "./dist/justified-gallery.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -21,10 +37,6 @@
     "demo": "vite --config demo/vite.config.ts",
     "test": "vitest",
     "lint": "tsc --noEmit"
-  },
-  "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.5",
@@ -38,13 +50,9 @@
     "vite": "^5.0.8",
     "vitest": "^1.0.4"
   },
-  "keywords": [
-    "react",
-    "gallery",
-    "justified",
-    "images",
-    "layout"
-  ],
-  "author": "",
-  "license": "MIT"
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "module": "./dist/justified-gallery.js"
 }
