@@ -5,6 +5,7 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [react()],
   build: {
+    emptyOutDir: false, // Don't clear dist folder (preserves .d.ts files from tsc)
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'ReactJustifiedGallery',
