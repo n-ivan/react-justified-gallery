@@ -33,6 +33,7 @@
   ],
   "scripts": {
     "build": "tsc --project tsconfig.build.json && vite build",
+    "build:demo": "vite build --config demo/vite.config.ts",
     "dev": "vite",
     "demo": "vite --config demo/vite.config.ts",
     "test": "vitest",
