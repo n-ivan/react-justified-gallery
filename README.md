@@ -1,12 +1,14 @@
 # react-justified-gallery
 
-A React component for creating beautiful justified image galleries with automatic layout calculations and responsive behavior.
+A React component for creating beautiful justified image galleries with CSS flexbox layout.
 
 ## Features
 
 - **Perfect Justification** - Images fill the full container width while preserving aspect ratios
-- **Fully Responsive** - Automatically recalculates layout on container resize using ResizeObserver
+- **Fully Responsive** - Pure CSS handles resize automatically
 - **Flexible Rendering** - Custom render prop for complete control over image display
+- **SSR-Friendly** - No client-side measurement needed
+- **Zero Re-renders** - No state changes on container resize
 
 ## Installation
 
@@ -17,7 +19,7 @@ npm install @n-ivan/react-justified-gallery
 ## Quick Start
 
 ```tsx
-import { JustifiedGallery } from 'react-justified-gallery';
+import { JustifiedGallery } from '@n-ivan/react-justified-gallery';
 
 const images = [
   [
@@ -59,7 +61,6 @@ type GalleryData = ImageData[][];
 | `images` | `ImageData[][]` | **required** | 2D array of image data |
 | `gap` | `number` | `8` | Gap between images in pixels |
 | `renderImage` | `function` | - | Custom render function for images |
-| `resizeDebounce` | `number` | `150` | Debounce delay for resize (ms) |
 | `lazyLoad` | `boolean` | `true` | Enable native lazy loading |
 | `onImageLoad` | `function` | - | Callback when image loads |
 | `onImageError` | `function` | - | Callback when image fails |
@@ -72,30 +73,13 @@ When using the `renderImage` prop, you receive the following properties:
 
 ```typescript
 interface RenderImageProps {
-  image: ImageData;           // Original image data
-  computedWidth: number;      // Calculated width
-  computedHeight: number;     // Calculated height
-  originalWidth: number;      // Original image width
-  originalHeight: number;     // Original image height
-  rowIndex: number;           // Row index (0-based)
-  imageIndex: number;         // Image index in row (0-based)
-  isFirstInRow: boolean;      // First image in row
-  isLastInRow: boolean;       // Last image in row
+  image: ImageData;  // Original image data
+  rowIndex: number;  // Row index (0-based)
+  imageIndex: number; // Image index in row (0-based)
 }
 ```
 
-## How It Works
-
-The component calculates the optimal height for each row based on:
-
-1. **Total aspect ratio** of all images in the row
-2. **Available width** (container width minus gaps)
-3. **Individual aspect ratios** of each image
-
-This ensures:
-- All images in a row have the same height
-- Each image maintains its original aspect ratio
-- The row fills the complete container width
+The wrapper div already has the correct `flex` and `aspect-ratio` styles applied, so your custom content just needs to fill `width: 100%` and `height: 100%`.
 
 ## Development
 
@@ -144,8 +128,8 @@ import type {
 ## Browser Support
 
 Modern browsers with support for:
-- ResizeObserver
-- ES2020+ features
+- CSS `aspect-ratio` property (Chrome 88+, Firefox 89+, Safari 15+, Edge 88+)
+- CSS Flexbox
 - React 18+
 
 ## License
